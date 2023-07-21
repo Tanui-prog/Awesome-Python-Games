@@ -16,7 +16,11 @@
 #----------------------------------------------------------
 
 import random
-import simplegui
+try:
+    import simplegui
+
+except ImportError:
+    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
 
 
 # helper functions
@@ -68,26 +72,26 @@ def number_to_name(number):
 def rpsls(player_choice): 
     
     print ("------------")
-    print "------------"    
+    print ("------------")
     
-    print "Player chooses " + player_choice 
+    print ("Player chooses "+ player_choice)
     
     player_number = name_to_number(player_choice)
     
-	comp_number = random.randrange(0,5)
+    comp_number = random.randrange(0,5)
     
     comp_choice = number_to_name(comp_number)
     
-    print "Computer chooses " + comp_choice 
+    print ("Computer chooses " + comp_choice )
     
     diff = (comp_number - player_number) % 5
 
     if diff == 1 or diff == 2:
-        print "Computer Wins"
+        print ("Computer Wins")
     elif diff == 3 or diff == 4:
-        print "Player Wins"
+        print ("Player Wins")
     else:
-        print "Player and computer tie!"
+        print ("Player and computer tie!")
  
 
 #----------------------------------------------------------
@@ -95,18 +99,18 @@ def rpsls(player_choice):
 #----------------------------------------------------------    
 #----------------------------------------------------------    
     
-	
+
 # Event Handlers
 
 def get_input(inp):
-	
-	if (inp == "rock" or inp == "paper" or inp == "lizard" or 
-			inp == "Spock" or inp == "scissors"):		
-		rpsls(inp)
-	else:
-		print "Error: Invalid Input"
-	
-	
+
+    if (inp == "rock" or inp == "paper" or inp == "lizard" or
+            inp == "Spock" or inp == "scissors"):
+        rpsls(inp)
+    else:
+        print ("Error: Invalid Input")
+
+
 
 
 # Creating a Frame
@@ -116,14 +120,14 @@ frame = simplegui.create_frame("Rock-paper-scissors-lizard-Spock",200,200)
 # Registering Handlers
 
 frame.add_input("Enter your choice: ", get_input,200)	
-	
-	
+
+
 # Starting the Frame
 
 frame.start()	
     
 
-	
+
 """	
 # test your code - THESE CALLS MUST BE PRESENT IN YOUR SUBMITTED CODE
 rpsls("rock")
